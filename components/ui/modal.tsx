@@ -31,7 +31,6 @@ const Modal: React.FC<ModalProps> = ({ title, description, isOpen, onClose, chil
     return (
         <>
             <Dialog open={isOpen} onOpenChange={onChange}>
-                <DialogTrigger>Open</DialogTrigger>
                 <DialogContent>
                     <DialogHeader>
                         <DialogTitle>{title}</DialogTitle>
@@ -39,6 +38,9 @@ const Modal: React.FC<ModalProps> = ({ title, description, isOpen, onClose, chil
                             {description}
                         </DialogDescription>
                     </DialogHeader>
+                    <div>
+                        {children}
+                    </div>
                 </DialogContent>
             </Dialog>
         </>
