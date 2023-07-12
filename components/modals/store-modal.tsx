@@ -30,8 +30,8 @@ export const StoreModal = () => {
 
     return (
         <Modal
-            title="Hello store"
-            description="sample description of sample store"
+            title="Create Store"
+            description="Add a new store to create and manage products."
             isOpen={storeModal.isOpen}
             onClose={() => storeModal.onClose}
         >
@@ -42,13 +42,13 @@ export const StoreModal = () => {
                         name="name"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Store Name</FormLabel>
+                                <FormLabel>Name</FormLabel>
                                 <FormControl>
-                                    <Input placeholder="cloths" {...field} />
+                                    <Input placeholder="shoes" {...field} />
                                 </FormControl>
-                                <FormDescription>
+                                {/* <FormDescription>
                                     This is your store name.
-                                </FormDescription>
+                                </FormDescription> */}
                                 <FormMessage />
                             </FormItem>
                         )}
