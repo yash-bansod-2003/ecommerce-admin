@@ -28,9 +28,9 @@ const SettingsPage: React.FC<StorePageProps> = async ({ params }) => {
     }
 
     return (
-        <>
+        <div className="p-4">
             <SettingsForm store={store} />
-        </>
+        </div>
     )
 }
 
