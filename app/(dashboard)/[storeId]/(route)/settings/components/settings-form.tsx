@@ -4,6 +4,8 @@ import { store } from "@prisma/client"
 import { Heading } from "@/components/ui/heading"
 import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator";
+import { useOrigin } from "@/hooks/use-origin";
+
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage, useFormField } from '@/components/ui/form';
 import { Input } from "@/components/ui/input";
 
@@ -16,6 +18,7 @@ import { useState } from "react";
 import { useToast } from "@/components/ui/use-toast";
 import axios from "axios";
 import { useParams, useRouter } from "next/navigation";
+import { ApiAlert } from "@/components/ui/api-alert";
 
 
 interface SettingsFormProps {
@@ -137,6 +140,12 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({ store }) => {
                     <Button disabled={loading} type="submit" >Save Changes</Button>
                 </form>
             </Form>
+            <Separator className="mb-6" />
+            <ApiAlert
+                title="NEXT_PUBLIC_API_URL"
+                description={`${origin}/api/${params.storeId}`}
+                variant="public"
+            />
         </>
     )
 }
