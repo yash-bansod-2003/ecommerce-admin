@@ -16,7 +16,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useToast } from "@/components/ui/use-toast";
 import axios from "axios";
-import { useParams, useRouter } from "next/navigation";
+import { redirect, useParams, useRouter } from "next/navigation";
 import { ImageUpload } from "@/components/ui/image-upload";
 
 
@@ -63,10 +63,7 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({ billboard }) => {
             else {
                 await axios.post(`/api/${params.storeId}/billboards`, values);
             }
-            router.refresh();
-            toast({
-                title: toastMessage
-            })
+            redirect(`/${params.storeId}/billboards`);
         }
         catch (error) {
             setLoading(false);
