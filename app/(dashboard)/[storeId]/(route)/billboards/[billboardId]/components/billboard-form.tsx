@@ -54,14 +54,21 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({ billboard }) => {
     })
 
     async function onSubmit(values: BillboardFormValues) {
+
         try {
             setLoading(true);
-            await axios.patch(`/api/billboards/${params.billboardId}`, values);
+            if (billboard) {
+                await axios.patch(`/api/${params.storeId}/billboards/${params.billboardId}`, values);
+            }
+            else {
+                await axios.post(`/api/${params.storeId}/billboards`, values);
+            }
             router.refresh();
             toast({
-                title: "billboard update successfully",
+                title: toastMessage
             })
-        } catch (error) {
+        }
+        catch (error) {
             setLoading(false);
             toast({
                 variant: 'destructive',
@@ -76,7 +83,7 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({ billboard }) => {
     async function onDelete() {
         try {
             setLoading(true);
-            await axios.delete(`/api/billboards/${params.billboardId}`);
+            await axios.delete(`/api/${params.storeId}/billboards/${params.billboardId}`);
             router.refresh();
             router.push('/');
             toast({
@@ -87,7 +94,7 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({ billboard }) => {
             setLoading(false);
             toast({
                 variant: 'destructive',
-                title: "make sure your billboard is empty it will not contain any products and categories.",
+                title: "make sure your billboard is empty it will not contain categories.",
             });
         }
         finally {
@@ -156,13 +163,13 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({ billboard }) => {
                                     <FormControl>
                                         <Input
                                             disabled={loading}
-                                            placeholder="label"
+                                            placeholder="Billboard label"
                                             {...field}
                                         />
                                     </FormControl>
-                                    <FormDescription>
+                                    {/* <FormDescription>
                                         This is Your display name
-                                    </FormDescription>
+                                    </FormDescription> */}
                                     <FormMessage />
                                 </FormItem>
                             )}

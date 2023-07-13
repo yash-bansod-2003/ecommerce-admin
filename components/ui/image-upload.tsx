@@ -64,6 +64,7 @@ export const ImageUpload: React.FC<ImageUploadProps> = ({
                         e.preventDefault();
                         open();
                     }
+
                     return (
                         <Button
                             type="button"
