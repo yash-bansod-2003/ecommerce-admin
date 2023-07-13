@@ -140,7 +140,7 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({ store }) => {
                     <Button disabled={loading} type="submit" >Save Changes</Button>
                 </form>
             </Form>
-            <Separator className="mb-6" />
+            <Separator className="my-4" />
             <ApiAlert
                 title="NEXT_PUBLIC_API_URL"
                 description={`${origin}/api/${params.storeId}`}

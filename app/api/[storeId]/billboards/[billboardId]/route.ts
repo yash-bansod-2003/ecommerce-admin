@@ -14,9 +14,9 @@ export async function GET(req: Request, { params }: { params: { storeId: string,
         }
 
         /* userId is not unique so we cant use delete we has to use deleteMany*/
-        const billboard = await prismaDb.store.findFirst({
+        const billboard = await prismaDb.billboard.findFirst({
             where: {
-                id: params.billboardId
+                id: params.billboardId,
             }
         });
 
@@ -113,9 +113,10 @@ export async function DELETE(req: Request, { params }: { params: { storeId: stri
         }
 
         /* userId is not unique so we cant use delete we has to use deleteMany*/
-        const deletedBillboard = await prismaDb.store.deleteMany({
+        const deletedBillboard = await prismaDb.billboard.deleteMany({
             where: {
-                id: params.billboardId
+                id: params.billboardId,
+                storeId: params.storeId
             }
         })
 

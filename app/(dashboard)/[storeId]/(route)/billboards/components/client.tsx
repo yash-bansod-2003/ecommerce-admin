@@ -8,6 +8,7 @@ import { PlusCircle } from "lucide-react";
 import { useParams, useRouter } from "next/navigation";
 import { BillboardColumn, columns } from "./columns";
 import { DataTable } from "@/components/ui/data-table";
+import { ApiList } from "@/components/ui/api-list";
 
 
 interface BillBoardClientProps {
@@ -37,7 +38,12 @@ export const BillBoardClient: React.FC<BillBoardClientProps> = ({ billboards }) 
                 </Button>
             </div>
             <Separator />
-            <DataTable columns={columns} data={billboards} />
+            <DataTable columns={columns} data={billboards} filterKey="label" />
+            <Heading
+                title="API"
+                description="Api calls for billboards"
+            />
+            <ApiList entityName="billboards" entityIdName="billboardId" />
         </>
     )
 }
