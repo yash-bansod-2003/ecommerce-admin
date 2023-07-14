@@ -4,6 +4,8 @@ import { MainNav } from '@/components/main-nav';
 import { StoreSwitcher } from '@/components/store-switcher';
 import prismaDb from "@/lib/prismadb";
 import { redirect } from "next/navigation";
+import { Button } from "./ui/button";
+import { Github } from "lucide-react";
 
 export const Navbar = async () => {
     const { userId } = auth();
