@@ -27,7 +27,9 @@ interface ColorFormProps {
 
 const formSchema = z.object({
     name: z.string().min(1).max(50),
-    value: z.string().min(1).max(50),
+    value: z.string().min(4).max(9).regex(/^#/, {
+        message: 'color value must be a valid hex code'
+    }),
 });
 
 type ColorFormValues = z.infer<typeof formSchema>;
@@ -154,11 +156,17 @@ export const ColorForm: React.FC<ColorFormProps> = ({ color }) => {
                                 <FormItem>
                                     <FormLabel>Value</FormLabel>
                                     <FormControl>
-                                        <Input
-                                            disabled={loading}
-                                            placeholder="color value"
-                                            {...field}
-                                        />
+                                        <div className="flex items-center gap-4">
+                                            <Input
+                                                disabled={loading}
+                                                placeholder="color value"
+                                                {...field}
+                                            />
+                                            <div
+                                                className="border p-4 rounded-full"
+                                                style={{ backgroundColor: field.value }}
+                                            />
+                                        </div>
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
