@@ -22,6 +22,7 @@ model store {
   sizes     size[]      @relation("StoreToSize")
   colours   color[]     @relation("StoreToColor")
   products  product[]   @relation("StoreToProduct")
+  orders    order[]     @relation("StoreToOrder")
 }
 
 model billboard {
@@ -81,22 +82,23 @@ model color {
 }
 
 model product {
-  id         String   @id @default(uuid())
+  id         String      @id @default(uuid())
   name       String
   price      Decimal
   isFeatured Boolean
   isArchived Boolean
-  images     image[]  @relation("ProductToImage")
+  images     image[]     @relation("ProductToImage")
   storeId    String
-  store      store    @relation("StoreToProduct", fields: [storeId], references: [id])
+  store      store       @relation("StoreToProduct", fields: [storeId], references: [id])
   categoryId String
-  category   category @relation("CategoryToProduct", fields: [categoryId], references: [id])
+  category   category    @relation("CategoryToProduct", fields: [categoryId], references: [id])
   sizeId     String
-  size       size     @relation("SizeToProduct", fields: [sizeId], references: [id])
+  size       size        @relation("SizeToProduct", fields: [sizeId], references: [id])
   colorId    String
-  color      color    @relation("ColorToProduct", fields: [colorId], references: [id])
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
+  color      color       @relation("ColorToProduct", fields: [colorId], references: [id])
+  orderItems orderItem[] @relation("OrderToProduct")
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
 
   @@index([storeId])
   @@index([categoryId])
@@ -112,5 +114,30 @@ model image {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
+  @@index([productId])
+}
+
+model order {
+  id         String      @id @default(uuid())
+  storeId    String
+  store      store       @relation("StoreToOrder", fields: [storeId], references: [id])
+  orderItems orderItem[] @relation("OrderToItem")
+  isPaid     Boolean     @default(false)
+  phone      String      @default("")
+  address    String      @default("")
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+
+  @@index([storeId])
+}
+
+model orderItem {
+  id        String  @id @default(uuid())
+  orderId   String
+  order     order   @relation("OrderToItem", fields: [orderId], references: [id])
+  productId String
+  product   product @relation("OrderToProduct", fields: [productId], references: [id])
+
+  @@index([orderId])
   @@index([productId])
 }
