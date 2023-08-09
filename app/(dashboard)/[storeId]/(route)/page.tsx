@@ -1,6 +1,6 @@
 import { Heading } from "@/components/ui/heading";
 import { Separator } from "@/components/ui/separator";
-import prismaDb from "@/lib/prismadb";
+import { getTotalRevenue } from "@/actions/get-total-revenue";
 import {
   Card,
   CardContent,
@@ -44,11 +44,9 @@ const DashboardCard: React.FC<DashboardCardProps> = ({ amount, icon, title }) =>
 
 const DashboardPage: React.FC<DashboardLayoutProps> = async ({ params }) => {
 
-  const store = await prismaDb.store.findFirst({
-    where: {
-      id: params.storeId
-    }
-  });
+  const totalRevenue = await getTotalRevenue(params.storeId);
+  // const salesCount = getSalesCount();
+  // const stockCount = getStockCount();
 
   return (
     <div className="flex flex-col">
@@ -59,7 +57,7 @@ const DashboardPage: React.FC<DashboardLayoutProps> = async ({ params }) => {
         />
         <Separator />
         <div className="grid gap-4 grid-cols-4">
-          <DashboardCard title="Total Revenue" amount={8000} icon={<IndianRupee />} />
+          <DashboardCard title="Total Revenue" amount={totalRevenue} icon={<IndianRupee />} />
           <DashboardCard title="Sales" amount={10000} icon={<CreditCard />} />
 
           <Card className="col-span-3">

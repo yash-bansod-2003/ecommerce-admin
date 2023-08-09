@@ -24,7 +24,7 @@ export const ColorClient: React.FC<ColorClientProps> = ({ colors }) => {
             <div className="flex justify-between items-center">
                 <Heading
                     title={`Colors (${colors.length})`}
-                    description="Manage colors for your store"
+                    description="Manage Colors For Your Store"
                 />
 
                 <Button

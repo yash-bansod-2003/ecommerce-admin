@@ -5,7 +5,7 @@ import { StoreSwitcher } from '@/components/store-switcher';
 import prismaDb from "@/lib/prismadb";
 import { redirect } from "next/navigation";
 import { Button } from "./ui/button";
-import { Github } from "lucide-react";
+import { Github, Heart } from "lucide-react";
 
 export const Navbar = async () => {
     const { userId } = auth();
@@ -26,6 +26,7 @@ export const Navbar = async () => {
                 <StoreSwitcher items={stores} />
                 <MainNav />
                 <div className="ml-auto flex items-center gap-4">
+                    <p>Developer <span className="underline font-bold">Yash Bansod.</span> </p>
                     <UserButton afterSignOutUrl="/" />
                 </div>
             </div>

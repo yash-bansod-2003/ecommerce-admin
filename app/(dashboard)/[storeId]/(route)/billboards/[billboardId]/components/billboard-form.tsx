@@ -91,7 +91,7 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({ billboard }) => {
             setLoading(false);
             toast({
                 variant: 'destructive',
-                title: "make sure your billboard is empty it will not contain categories.",
+                title: "Make sure your billboard is empty it will not associated with other entities.",
             });
         }
         finally {
@@ -142,9 +142,6 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({ billboard }) => {
                                         onRemove={() => field.onChange("")}
                                     />
                                 </FormControl>
-                                {/* <FormDescription>
-                                    This is your billboard name.
-                                </FormDescription> */}
                                 <FormMessage />
                             </FormItem>
                         )}
@@ -160,13 +157,10 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({ billboard }) => {
                                     <FormControl>
                                         <Input
                                             disabled={loading}
-                                            placeholder="Billboard label"
+                                            placeholder="Billboard Label"
                                             {...field}
                                         />
                                     </FormControl>
-                                    {/* <FormDescription>
-                                        This is Your display name
-                                    </FormDescription> */}
                                     <FormMessage />
                                 </FormItem>
                             )}

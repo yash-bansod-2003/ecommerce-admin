@@ -94,7 +94,7 @@ export const ColorForm: React.FC<ColorFormProps> = ({ color }) => {
             setLoading(false);
             toast({
                 variant: 'destructive',
-                title: "make sure your category is empty it will not contain products.",
+                title: "Make sure your category is empty it will not associated with any Product.",
             });
         }
         finally {
@@ -140,7 +140,7 @@ export const ColorForm: React.FC<ColorFormProps> = ({ color }) => {
                                     <FormControl>
                                         <Input
                                             disabled={loading}
-                                            placeholder="color name"
+                                            placeholder="Color Name"
                                             {...field}
                                         />
                                     </FormControl>
@@ -159,7 +159,7 @@ export const ColorForm: React.FC<ColorFormProps> = ({ color }) => {
                                         <div className="flex items-center gap-4">
                                             <Input
                                                 disabled={loading}
-                                                placeholder="color value"
+                                                placeholder="Color Value"
                                                 {...field}
                                             />
                                             <div

@@ -25,7 +25,7 @@ export const BillBoardClient: React.FC<BillBoardClientProps> = ({ billboards }) 
             <div className="flex justify-between items-center">
                 <Heading
                     title={`Billboard (${billboards.length})`}
-                    description="Manage billboards for your store"
+                    description="Manage Billboards For Your Store."
                 />
 
                 <Button
@@ -41,7 +41,7 @@ export const BillBoardClient: React.FC<BillBoardClientProps> = ({ billboards }) 
             <DataTable columns={columns} data={billboards} filterKey="label" />
             <Heading
                 title="API"
-                description="Api calls for billboards"
+                description="Api Calls For Billboards"
             />
             <ApiList entityName="billboards" entityIdName="billboardId" />
         </>

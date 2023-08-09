@@ -99,7 +99,7 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({ category, billboards
             setLoading(false);
             toast({
                 variant: 'destructive',
-                title: "make sure your category is empty it will not contain products.",
+                title: "Make sure your category is empty it will not associated with any other entity.",
             });
         }
         finally {

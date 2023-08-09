@@ -25,7 +25,7 @@ export const CategoryClient: React.FC<CategoryClientProps> = ({ categories }) =>
             <div className="flex justify-between items-center">
                 <Heading
                     title={`Category (${categories.length})`}
-                    description="Manage categories for your store"
+                    description="Manage Categories For Your Store"
                 />
 
                 <Button
