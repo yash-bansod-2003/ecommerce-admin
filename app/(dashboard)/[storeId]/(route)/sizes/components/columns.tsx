@@ -19,7 +19,7 @@ export const columns: ColumnDef<SizeColumn>[] = [
     },
     {
         accessorKey: "value",
-        header: "Billboard",
+        header: "Value",
         cell: ({ row }) => row.original.value
     },
     {
