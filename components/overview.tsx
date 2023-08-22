@@ -1,6 +1,7 @@
 "use client";
 
 import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { useTheme } from 'next-themes';
 
 const data = [
     {
@@ -48,8 +49,14 @@ const data = [
 ];
 
 export const Overview = () => {
+
+    const { theme } = useTheme();
+
+    console.log("Theme", theme);
+
+
     return (
-        <ResponsiveContainer width="100%"  height={350}>
+        <ResponsiveContainer width="100%" height={350}>
             <BarChart data={data}>
                 <XAxis
                     dataKey="name"
@@ -65,7 +72,7 @@ export const Overview = () => {
                     axisLine={false}
                     tickFormatter={(value) => `₹${value}`}
                 />
-                <Bar dataKey="uv" fill="hsl(240 10% 1.9%)" radius={[4, 4, 0, 0]} />
+                <Bar dataKey="uv" fill={theme === "light" ? "hsl(240 10% 3.9%)" : "hsl(0 0% 100%)"} radius={[4, 4, 0, 0]} />
             </BarChart>
         </ResponsiveContainer>
     )

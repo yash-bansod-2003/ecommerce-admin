@@ -3,6 +3,7 @@
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import { useParams, usePathname } from 'next/navigation';
+import { ModeToggle } from '@/components/mode-toggle';
 
 export const MainNav = ({
     className,
@@ -71,6 +72,7 @@ export const MainNav = ({
                     )
                 })
             }
+            <ModeToggle />
         </nav>
     )
 }
